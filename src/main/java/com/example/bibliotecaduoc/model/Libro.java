@@ -1,27 +1,31 @@
 package com.example.bibliotecaduoc.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Data //Es una combinación de varias anotaciones de Lombok
-//Genera automaticamente los siguientes métodos para la clase:
-/**
- * @Getter
- * @Setter
- * @ToString
- * @EqualsAndHashCode Genera métodos equals y hashCode que compara los campos
- * @RequiredArgsConstructor Genera un constructor con los campos finales (final) y los campos marcados con @NonNull
- */
-@AllArgsConstructor //Genera automatica un constructor que incluye todos los campos de la clase como parametros
-@NoArgsConstructor //Genera un constructor vacío , sin argumentos 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Schema(description = "Representa un libro en el inventario del ecommerce")
 public class Libro {
 
+    @Schema(description = "Identificador único del libro", example = "1", required = true)
     private int id;
+
+    @Schema(description = "Código ISBN del libro (formato estándar de 13 dígitos)", example = "978-3-16-148410-0", required = true)
     private String isbn;
+
+    @Schema(description = "Título del libro", example = "El Quijote", required = true)
     private String titulo;
+
+    @Schema(description = "Editorial que publicó el libro", example = "Anaya")
     private String editorial;
+
+    @Schema(description = "Año de publicación del libro", example = "1605", minimum = "1000", maximum = "2026")
     private int fechaPublicacion;
+
+    @Schema(description = "Nombre completo del autor", example = "Miguel de Cervantes", required = true)
     private String autor;
 }
